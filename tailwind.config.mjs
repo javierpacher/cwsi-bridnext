@@ -25,11 +25,14 @@ export default {
 
     // ── Pricing: dynamic conditional classes ──
     'scale-[1.02]',
-    'shadow-bn-teal/15',
+    'shadow-bn-teal/15', 'shadow-bn-teal/20', 'shadow-bn-teal/25',
+    'shadow-lg', 'shadow-2xl',
     'bg-bn-teal/15',
     'bg-bn-navy/8', 'hover:bg-bn-navy/14',
     'border-bn-navy/12',
     'border-bn-teal/25',
+    // ── WhatWeAre: hover shadow on cards ──
+    'hover:shadow-bn-navy/8',
 
     // ── WhatWeAre: bottom accent line on hover ──
     { pattern: /^scale-x-(0|100)$/ },
