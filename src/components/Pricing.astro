@@ -155,16 +155,15 @@ const plans = [
 
           {/* CTA */}
           <div class="px-7 pb-8">
-            <a
-              href="#contacto"
-              class={`block w-full text-center font-semibold py-3.5 rounded-xl text-sm transition-all duration-200
-                ${plan.featured
-                  ? 'bg-bn-teal hover:bg-bn-teal-light text-white shadow-lg shadow-bn-teal/25'
-                  : 'bg-bn-navy/8 hover:bg-bn-navy/14 text-bn-navy border border-bn-navy/12'
-                }`}
-            >
-              {plan.cta}
-            </a>
+            {plan.featured ? (
+              <a href="#contacto" class="block w-full text-center font-semibold py-3.5 rounded-xl text-sm transition-all duration-200 bg-bn-teal hover:bg-bn-teal-light text-white shadow-lg shadow-bn-teal/25">
+                {plan.cta}
+              </a>
+            ) : (
+              <a href="#contacto" class="block w-full text-center font-semibold py-3.5 rounded-xl text-sm transition-all duration-200 bg-bn-navy/10 hover:bg-bn-navy/15 text-bn-navy border border-bn-navy/10">
+                {plan.cta}
+              </a>
+            )}
           </div>
         </div>
       ))}
