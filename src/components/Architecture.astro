@@ -1,0 +1,165 @@
+---
+const layers = [
+  {
+    label: 'User Layer',
+    color: 'border-white/20',
+    items: [
+      { name: 'Web Browser',    icon: '🌐' },
+      { name: 'App Móvil MFA', icon: '📱' },
+    ],
+  },
+  {
+    label: 'IdP',
+    color: 'border-bn-teal/40',
+    items: [
+      { name: 'Login Portal + MFA',           icon: '🔐' },
+      { name: 'Microsoft / Google (Federated)', icon: '🌐' },
+    ],
+  },
+  {
+    label: 'GSLB',
+    color: 'border-bn-green/40',
+    items: [
+      { name: 'DNS-based Routing', icon: '🔀' },
+    ],
+  },
+  {
+    label: 'Bridnext',
+    color: 'border-bn-teal/50',
+    sub: [
+      { label: 'Public Cloud',  items: ['Backend', 'Admin Portal'] },
+      { label: 'Private Cloud', items: ['Backend', 'Admin Portal'] },
+    ],
+  },
+];
+---
+
+<section id="arquitectura" class="py-24 bg-bn-navy relative overflow-hidden">
+
+  <!-- Background waves -->
+  <div
+    class="absolute inset-0 opacity-20"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 28px 28px;"
+  ></div>
+  <svg class="absolute bottom-0 right-0 w-1/2 max-w-lg opacity-60 rotate-180 pointer-events-none" viewBox="0 0 700 400" fill="none" aria-hidden="true">
+    <path d="M-100 80 C 100 0 300 160 500 80 C 700 0 800 160 1000 80 L1000 400 L-100 400Z" fill="#14b8a6" opacity="0.10"/>
+    <path d="M-100 140 C 80  60 280 220 480 140 C 680 60  800 220  980 140 L980 400 L-100 400Z" fill="#4ade80" opacity="0.08"/>
+  </svg>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block bg-bn-teal text-white text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
+        Arquitectura Global
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-black text-white leading-tight">
+        SaaS + On-Prem.<br/>
+        <span class="text-bn-teal-light">Multi-Cloud & GSLB.</span>
+      </h2>
+      <p class="mt-5 text-lg text-white/50 max-w-2xl mx-auto">
+        El backend de Bridnext opera en nube pública y privada con sincronización persistente.
+        El conector vive dentro de tu red, sin exponer puertos adicionales.
+      </p>
+    </div>
+
+    <!-- Architecture diagram -->
+    <div class="flex flex-col lg:flex-row items-stretch gap-3 lg:gap-2">
+
+      <!-- User Layer -->
+      <div class="flex-1 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-5">
+        <p class="text-xs font-semibold tracking-widest text-white/40 uppercase mb-4">User Layer</p>
+        <div class="space-y-2.5">
+          <div class="bg-bn-teal/20 border border-bn-teal/30 rounded-xl px-4 py-3 text-sm font-medium text-white/80">🌐 Web Browser</div>
+          <div class="bg-bn-teal/20 border border-bn-teal/30 rounded-xl px-4 py-3 text-sm font-medium text-white/80">📱 App Móvil MFA</div>
+        </div>
+        <div class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <p class="text-xs font-semibold tracking-widest text-white/30 uppercase mb-3">On-Prem Legacy</p>
+          <div class="space-y-2">
+            <div class="bg-white/10 rounded-lg px-3 py-2 text-xs text-white/70">🔗 Public URL</div>
+            <div class="bg-white/10 rounded-lg px-3 py-2 text-xs text-white/70">🖥 Local Host</div>
+            <div class="bg-bn-teal/25 border border-bn-teal/40 rounded-lg px-3 py-2 text-xs font-semibold text-white">⚙️ Bridnext Connector</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden lg:flex items-center justify-center text-bn-teal/60 text-2xl self-center px-1">→</div>
+      <div class="flex lg:hidden items-center justify-center text-bn-teal/60 text-2xl py-0.5">↓</div>
+
+      <!-- IdP -->
+      <div class="flex-1 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-5">
+        <p class="text-xs font-semibold tracking-widest text-white/40 uppercase mb-4">IdP (SafeCertus)</p>
+        <div class="space-y-2.5">
+          <div class="bg-bn-teal/20 border border-bn-teal/30 rounded-xl px-4 py-3 text-sm font-medium text-white/80">🔐 Login Portal + MFA</div>
+          <div class="bg-bn-teal/20 border border-bn-teal/30 rounded-xl px-4 py-3 text-sm font-medium text-white/80">🌐 Microsoft / Google</div>
+        </div>
+        <div class="mt-4 text-xs text-white/30 px-1 leading-relaxed">
+          OIDC 2.0 · Biometría · TOTP · Push
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden lg:flex items-center justify-center text-bn-teal/60 text-2xl self-center px-1">→</div>
+      <div class="flex lg:hidden items-center justify-center text-bn-teal/60 text-2xl py-0.5">↓</div>
+
+      <!-- GSLB -->
+      <div class="flex-1 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-5">
+        <p class="text-xs font-semibold tracking-widest text-white/40 uppercase mb-4">GSLB</p>
+        <div class="bg-bn-green/20 border border-bn-green/30 rounded-xl px-4 py-3 text-sm font-medium text-white/80">🔀 DNS-based Routing</div>
+        <div class="mt-4 text-xs text-white/30 px-1 leading-relaxed">
+          Balanceo global · Alta disponibilidad
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden lg:flex items-center justify-center text-bn-teal/60 text-2xl self-center px-1">→</div>
+      <div class="flex lg:hidden items-center justify-center text-bn-teal/60 text-2xl py-0.5">↓</div>
+
+      <!-- Bridnext backend -->
+      <div class="flex-[1.4] rounded-2xl border border-bn-teal/25 bg-bn-teal/5 backdrop-blur-sm p-5">
+        <p class="text-xs font-semibold tracking-widest text-bn-teal-light/70 uppercase mb-4">Bridnext</p>
+        <div class="space-y-3">
+          <!-- Public Cloud -->
+          <div class="rounded-xl border border-dashed border-white/15 p-3">
+            <p class="text-[11px] font-semibold text-bn-teal-light/60 uppercase tracking-widest mb-2">Public Cloud</p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="bg-bn-teal/25 border border-bn-teal/35 rounded-lg px-3 py-2 text-xs font-medium text-white/80 text-center">Backend</div>
+              <div class="bg-bn-teal/25 border border-bn-teal/35 rounded-lg px-3 py-2 text-xs font-medium text-white/80 text-center">Admin Portal</div>
+            </div>
+          </div>
+          <!-- Sync badge -->
+          <div class="text-center text-[10px] text-bn-lime/70 font-semibold tracking-widest uppercase">⟳ Persistent Sync</div>
+          <!-- Private Cloud -->
+          <div class="rounded-xl border border-dashed border-white/15 p-3">
+            <p class="text-[11px] font-semibold text-bn-teal-light/60 uppercase tracking-widest mb-2">Private Cloud</p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="bg-white/10 border border-white/15 rounded-lg px-3 py-2 text-xs font-medium text-white/80 text-center">Backend</div>
+              <div class="bg-white/10 border border-white/15 rounded-lg px-3 py-2 text-xs font-medium text-white/80 text-center">Admin Portal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Key points -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+      {[
+        { label: 'Backend SaaS',       desc: 'Multi-cloud con GSLB' },
+        { label: 'Multi-Tenant',       desc: 'Orquestación por org' },
+        { label: 'OIDC + OAuth 2.0',   desc: 'Integración IdP nativa' },
+        { label: 'Federated Mapping',  desc: 'IdP user ↔ Local user' },
+      ].map(p => (
+        <div class="flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl px-5 py-4">
+          <span class="text-bn-teal text-lg mt-0.5">◆</span>
+          <div>
+            <p class="text-sm font-semibold text-white">{p.label}</p>
+            <p class="text-xs text-white/45 mt-0.5">{p.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

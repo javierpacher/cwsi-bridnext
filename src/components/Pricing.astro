@@ -1,0 +1,180 @@
+---
+const plans = [
+  {
+    name: 'Pro',
+    price: '$60',
+    period: 'usd / mes',
+    description: 'Para equipos pequeños que necesitan SSO + MFA en JDE por primera vez.',
+    featured: false,
+    cta: 'Comenzar con Pro',
+    features: [
+      { label: 'JDE Connector', detail: '1 host físico' },
+      { label: 'Instancias JDE', detail: 'Hasta 6' },
+      { label: 'Dominios', detail: 'Single-domain' },
+      { label: 'Usuarios', detail: 'Hasta 10' },
+      { label: 'Logs de Auditoría', detail: null },
+      { label: 'Admin', detail: '1 usuario admin' },
+      { label: 'IdP integrado', detail: 'Password + TOTP authenticator' },
+      { label: 'Federated login', detail: 'Microsoft · Google' },
+    ],
+  },
+  {
+    name: 'Business',
+    price: '$240',
+    period: 'usd / mes',
+    description: 'Para organizaciones con múltiples hosts, dominios y equipos de mayor tamaño.',
+    featured: true,
+    cta: 'Comenzar con Business',
+    features: [
+      { label: 'JDE Connector', detail: '3 hosts físicos' },
+      { label: 'Instancias JDE', detail: 'Hasta 18' },
+      { label: 'Dominios', detail: 'Multi-domain' },
+      { label: 'Usuarios', detail: 'Hasta 30' },
+      { label: 'Logs de Auditoría', detail: null },
+      { label: 'Admin', detail: '2 admin + 1 audit' },
+      { label: 'IdP integrado', detail: 'Push TOTP + Passkey' },
+      { label: 'Federated login', detail: 'Microsoft · Google' },
+      { label: 'Multi-tenant', detail: 'Organization support' },
+    ],
+  },
+  {
+    name: 'Enterprise',
+    price: null,
+    period: 'basado en cotización',
+    description: 'Para grandes organizaciones con requerimientos avanzados, SLA garantizado y soporte dedicado.',
+    featured: false,
+    cta: 'Contactar ventas',
+    features: [
+      { label: 'JDE Connector', detail: 'Hosts ilimitados' },
+      { label: 'Instancias JDE', detail: 'Sin límite' },
+      { label: 'Dominios', detail: 'Multi-domain' },
+      { label: 'Usuarios', detail: 'Sin límite' },
+      { label: 'Logs de Auditoría', detail: 'Retención extendida' },
+      { label: 'Admin', detail: 'Roles personalizados' },
+      { label: 'IdP integrado', detail: 'Push TOTP + Passkey + Biometría' },
+      { label: 'Federated login', detail: 'Microsoft · Google · Custom IdP' },
+      { label: 'Multi-tenant', detail: 'Organization support' },
+      { label: 'SLA garantizado', detail: null },
+      { label: 'Soporte dedicado', detail: null },
+    ],
+  },
+];
+---
+
+<section id="precios" class="py-24 bg-bn-gray relative overflow-hidden">
+
+  <!-- Soft wave top -->
+  <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="inline-block bg-bn-teal text-white text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
+        Precios
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-black text-bn-navy leading-tight">
+        Simple y transparente
+      </h2>
+      <p class="mt-5 text-lg text-bn-navy/55">
+        Sin cargos ocultos. Sin licencias de Oracle. Elige el plan que se ajusta a tu organización.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      {plans.map(plan => (
+        <div
+          class={`relative flex flex-col rounded-2xl overflow-hidden border-2 transition-shadow duration-200 hover:shadow-xl
+            ${plan.featured
+              ? 'bg-bn-navy border-bn-teal shadow-2xl shadow-bn-teal/15 scale-[1.02]'
+              : 'bg-white border-bn-navy/10 shadow-sm'
+            }`}
+        >
+          {/* Popular badge */}
+          {plan.featured && (
+            <div class="absolute top-0 left-0 right-0 flex justify-center">
+              <span class="bg-bn-teal text-white text-[10px] font-bold tracking-widest uppercase px-4 py-1 rounded-b-lg">
+                Más popular
+              </span>
+            </div>
+          )}
+
+          {/* Top accent bar */}
+          <div class={`h-1.5 w-full ${plan.featured ? 'bg-bn-teal' : 'bg-bn-navy/10'}`} />
+
+          {/* Header */}
+          <div class={`px-7 pt-8 pb-6 border-b ${plan.featured ? 'border-white/10' : 'border-bn-navy/8'}`}>
+            <h3 class={`text-2xl font-black mb-1 ${plan.featured ? 'text-white' : 'text-bn-navy'}`}>
+              {plan.name}
+            </h3>
+            <p class={`text-sm mb-5 leading-relaxed ${plan.featured ? 'text-white/55' : 'text-bn-navy/50'}`}>
+              {plan.description}
+            </p>
+
+            {/* Price */}
+            <div class="flex items-end gap-1.5">
+              {plan.price ? (
+                <>
+                  <span class={`text-5xl font-black leading-none ${plan.featured ? 'text-white' : 'text-bn-navy'}`}>
+                    {plan.price}
+                  </span>
+                  <span class={`text-sm mb-1.5 ${plan.featured ? 'text-white/50' : 'text-bn-navy/40'}`}>
+                    {plan.period}
+                  </span>
+                </>
+              ) : (
+                <span class={`text-2xl font-bold ${plan.featured ? 'text-white' : 'text-bn-navy'}`}>
+                  {plan.period}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Features */}
+          <div class="px-7 py-6 flex-1">
+            <ul class="space-y-3">
+              {plan.features.map(f => (
+                <li class="flex items-start gap-2.5">
+                  <span class={`mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center
+                    ${plan.featured ? 'bg-bn-teal' : 'bg-bn-teal/15'}`}>
+                    <svg class={`w-2.5 h-2.5 ${plan.featured ? 'text-white' : 'text-bn-teal'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </span>
+                  <span class={`text-sm ${plan.featured ? 'text-white/80' : 'text-bn-navy/70'}`}>
+                    <span class="font-semibold">{f.label}</span>
+                    {f.detail && (
+                      <span class={`${plan.featured ? 'text-white/50' : 'text-bn-navy/45'}`}> — {f.detail}</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CTA */}
+          <div class="px-7 pb-8">
+            <a
+              href="#contacto"
+              class={`block w-full text-center font-semibold py-3.5 rounded-xl text-sm transition-all duration-200
+                ${plan.featured
+                  ? 'bg-bn-teal hover:bg-bn-teal-light text-white shadow-lg shadow-bn-teal/25'
+                  : 'bg-bn-navy/8 hover:bg-bn-navy/14 text-bn-navy border border-bn-navy/12'
+                }`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footnote -->
+    <p class="text-center text-sm text-bn-navy/40 mt-10">
+      Todos los planes incluyen acceso al Admin Portal y soporte por email.
+      Precios en USD, facturación mensual.
+    </p>
+
+  </div>
+</section>

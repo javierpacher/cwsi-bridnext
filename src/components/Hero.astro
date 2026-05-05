@@ -1,0 +1,99 @@
+---
+---
+<section id="hero" class="relative min-h-screen flex items-center justify-center bg-bn-navy overflow-hidden">
+
+  <!-- Dot grid -->
+  <div
+    class="absolute inset-0 opacity-25"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+  ></div>
+
+  <!-- Top-left wave layers (brand palette) -->
+  <svg class="absolute top-0 left-0 w-[70%] max-w-3xl pointer-events-none" viewBox="0 0 900 600" fill="none" aria-hidden="true">
+    <path d="M-150 60  C 80 -60  320 220 520 140 C 720 60  820 240 1000 180 L1000 -200 L-150 -200Z" fill="#599E9F" opacity="0.14"/>
+    <path d="M-150 120 C 60  20  280 280 500 200 C 720 120 840 300 1050 240 L1050-200 L-150-200Z"  fill="#E1FC80" opacity="0.09"/>
+    <path d="M-150 180 C 40  80  260 340 480 260 C 700 180 860 360 1100 280 L1100-200 L-150-200Z"  fill="#599E9F" opacity="0.10"/>
+    <path d="M-150  10 C 30  -80 200 160 380  80 C 560   0 680 160  860 100 L 860-200 L-150-200Z"  fill="#73B9BA" opacity="0.16"/>
+  </svg>
+
+  <!-- Bottom-right wave layers -->
+  <svg class="absolute bottom-0 right-0 w-[65%] max-w-2xl pointer-events-none rotate-180" viewBox="0 0 900 600" fill="none" aria-hidden="true">
+    <path d="M-150 60  C 80 -60  320 220 520 140 C 720 60  820 240 1000 180 L1000 -200 L-150 -200Z" fill="#E1FC80" opacity="0.08"/>
+    <path d="M-150 120 C 60  20  280 280 500 200 C 720 120 840 300 1050 240 L1050-200 L-150-200Z"  fill="#599E9F" opacity="0.12"/>
+    <path d="M-150 180 C 40  80  260 340 480 260 C 700 180 860 360 1100 280 L1100-200 L-150-200Z"  fill="#73B9BA" opacity="0.09"/>
+  </svg>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16">
+
+    <!-- Official logo mark -->
+    <div class="flex justify-center mb-10 animate-float">
+      <img
+        src="/Bridnext_icon.png"
+        alt="Bridnext"
+        class="h-28 w-auto drop-shadow-2xl"
+      />
+    </div>
+
+    <!-- Brand name in Corbel -->
+    <h1 class="font-brand text-6xl sm:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-none">
+      Bridnext
+    </h1>
+
+    <!-- Tagline -->
+    <p class="mt-4 text-xl sm:text-2xl font-light text-white/55 tracking-wide">
+      From legacy to next-gen authentication.
+    </p>
+
+    <!-- Description -->
+    <p class="mt-8 max-w-2xl mx-auto text-base sm:text-lg text-white/60 leading-relaxed">
+      Un puente entre tecnologías legacy y autenticación moderna. Integra&nbsp;
+      <strong class="text-white/80 font-semibold">SSO&nbsp;+&nbsp;MFA</strong> con&nbsp;
+      <strong class="text-white/80 font-semibold">OIDC / OAuth&nbsp;2.0</strong> en JDE, SAP y PeopleSoft
+      sin reemplazar tu infraestructura existente.
+    </p>
+
+    <!-- Pill badges -->
+    <div class="flex flex-wrap justify-center gap-2.5 mt-9">
+      {[
+        'SSO + MFA',
+        'On-Prem Connector',
+        'Multi-Tenant',
+        'Microsoft & Google',
+        'OIDC / OAuth 2.0',
+      ].map(label => (
+        <span class="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/15 text-white/80 text-xs font-medium px-3.5 py-1.5 rounded-full">
+          {label}
+        </span>
+      ))}
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-11">
+      <a
+        href="#como-funciona"
+        class="inline-flex items-center justify-center gap-2 bg-bn-teal hover:bg-bn-teal-light text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-xl shadow-bn-teal/20"
+      >
+        Ver cómo funciona
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a
+        href="#que-somos"
+        class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200"
+      >
+        Conocer más
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 animate-bounce">
+    <span class="text-[11px] tracking-widest uppercase">Scroll</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+
+</section>

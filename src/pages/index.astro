@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import WhatWeAre from '../components/WhatWeAre.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import UseCase from '../components/UseCase.astro';
+import Pricing from '../components/Pricing.astro';
+import Roadmap from '../components/Roadmap';
+import CtaSection from '../components/CtaSection.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Bridnext — From legacy to next-gen authentication.">
+  <Navbar />
+  <main>
+    <Hero />
+    <WhatWeAre />
+    <HowItWorks />
+    <UseCase />
+    <Pricing />
+    <section id="roadmap" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Roadmap client:load />
+      </div>
+    </section>
+    <CtaSection />
+  </main>
+  <Footer />
+</Layout>

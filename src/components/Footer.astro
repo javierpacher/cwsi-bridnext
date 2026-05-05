@@ -1,0 +1,79 @@
+---
+const navLinks = [
+  { href: '#que-somos',     label: '¿Qué Somos?' },
+  { href: '#como-funciona', label: 'Cómo Funciona' },
+  { href: '#precios',       label: 'Precios' },
+  { href: '#roadmap',       label: 'Roadmap' },
+];
+---
+<footer class="bg-bn-navy border-t border-white/8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="Bridnext">
+          <img src="/Bridnext_icon.png" alt="Bridnext" class="h-9 w-auto" />
+          <span class="font-brand text-xl font-bold text-white">Bridnext</span>
+        </a>
+        <p class="text-sm text-white/40 leading-relaxed max-w-xs">
+          From legacy to next-gen authentication.<br/>
+          SSO + MFA para JDE, SAP, PeopleSoft y más.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h4 class="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">Navegación</h4>
+        <ul class="space-y-3">
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-white/55 hover:text-white transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">Contacto</h4>
+        <a
+          href="mailto:contacto@bridnext.com"
+          class="text-sm text-white/55 hover:text-white transition-colors duration-200 flex items-center gap-2 mb-3"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          contacto@bridnext.com
+        </a>
+        <div class="mt-6">
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-1.5 bg-bn-teal hover:bg-bn-teal-light text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors duration-200"
+          >
+            Solicitar Demo
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-6 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-white/25">
+        © {new Date().getFullYear()} Bridnext. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-1.5 text-xs text-white/20">
+        <span>Powered by</span>
+        <span class="text-white/35 font-semibold">SafeCertus</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

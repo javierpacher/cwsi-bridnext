@@ -1,0 +1,118 @@
+---
+const comparison = [
+  { feature: 'SSO nativo en JDE',            oracle: true,  bn: true  },
+  { feature: 'MFA (TOTP / Push)',             oracle: true,  bn: true  },
+  { feature: 'Login Federado (M365/Google)', oracle: true,  bn: true  },
+  { feature: 'Conector On-Prem liviano',      oracle: false, bn: true  },
+  { feature: 'Sin licencia Oracle OAM/IDCS',  oracle: false, bn: true  },
+  { feature: 'Deploy en semanas',             oracle: false, bn: true  },
+  { feature: 'Multi-tenant SaaS',            oracle: false, bn: true  },
+  { feature: 'Audit log integrado',           oracle: false, bn: true  },
+];
+
+const useCases = [
+  {
+    icon: '🏭',
+    app: 'JD Edwards',
+    version: 'E1 / World',
+    desc: 'Reemplaza el password local de JDE para el flujo diario. El conector se despliega en WebLogic como WAR liviano. El perfil RBAC y los roles JDE quedan intactos.',
+    status: '🟢 En producción',
+  },
+  {
+    icon: '🔷',
+    app: 'SAP',
+    version: 'ERP / S/4HANA',
+    desc: 'Conector en desarrollo (Phase 3 del roadmap). Misma arquitectura de handoff JWT, adaptada al stack de autenticación SAP.',
+    status: '🔵 En desarrollo',
+  },
+  {
+    icon: '👥',
+    app: 'PeopleSoft',
+    version: 'HCM / FSCM',
+    desc: 'Previsto para Phase 4. Integrará el flujo SSO+MFA al portal de PeopleSoft sin modificar la lógica de roles y permisos existente.',
+    status: '🟡 En roadmap',
+  },
+  {
+    icon: '🌐',
+    app: 'Apps Web Legacy',
+    version: 'Custom auth',
+    desc: 'Phase 5 abrirá la integración a portales web antiguos con autenticación custom. Bridnext actuará como Identity Broker genérico.',
+    status: '🟡 En roadmap',
+  },
+];
+---
+
+<section id="caso-de-uso" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-black text-bn-navy leading-tight">
+        El equivalente de OAM/IDCS<br/>
+        <span class="text-bn-teal">sin los costos de Oracle</span>
+      </h2>
+      <p class="mt-5 text-lg text-bn-navy/55 max-w-2xl mx-auto">
+        JDE fue diseñado para SSO oficial comprando licencia OAM. Si además quieres MFA,
+        necesitas OAM + IDCS. Bridnext es el equivalente lógico.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Comparison table -->
+      <div>
+        <h3 class="text-lg font-bold text-bn-navy mb-5">Bridnext vs Oracle OAM/IDCS</h3>
+        <div class="rounded-2xl border border-bn-navy/10 overflow-hidden">
+          <!-- Table header -->
+          <div class="grid grid-cols-3 bg-bn-navy px-5 py-3 text-xs font-semibold uppercase tracking-wider">
+            <span class="text-white/50">Capacidad</span>
+            <span class="text-white/50 text-center">OAM/IDCS</span>
+            <span class="text-bn-teal-light text-center">Bridnext</span>
+          </div>
+          <!-- Rows -->
+          {comparison.map((row, i) => (
+            <div class={`grid grid-cols-3 px-5 py-3.5 text-sm items-center ${i % 2 === 0 ? 'bg-white' : 'bg-bn-gray/50'}`}>
+              <span class="text-bn-navy/70 font-medium">{row.feature}</span>
+              <span class="text-center text-lg">
+                {row.oracle
+                  ? <span class="text-green-500">✓</span>
+                  : <span class="text-red-400/60">✗</span>
+                }
+              </span>
+              <span class="text-center text-lg">
+                {row.bn
+                  ? <span class="text-bn-teal font-bold">✓</span>
+                  : <span class="text-red-400/60">✗</span>
+                }
+              </span>
+            </div>
+          ))}
+        </div>
+        <!-- Note about break-glass -->
+        <div class="mt-5 bg-bn-gray rounded-xl px-5 py-4 text-sm text-bn-navy/60 leading-relaxed">
+          <strong class="text-bn-navy">Nota:</strong> El password local de JDE sigue vigente como break-glass, contingencia, soporte y auditoría —
+          pero queda obsoleto para el flujo diario de login.
+        </div>
+      </div>
+
+      <!-- Use case cards -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-bn-navy mb-5">Aplicaciones compatibles</h3>
+        {useCases.map(uc => (
+          <div class="flex gap-4 bg-white border border-bn-navy/8 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-200">
+            <span class="text-3xl shrink-0 mt-0.5">{uc.icon}</span>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-bold text-bn-navy">{uc.app}</h4>
+                <span class="text-xs text-bn-navy/40 bg-bn-gray px-2 py-0.5 rounded-md font-mono">{uc.version}</span>
+              </div>
+              <p class="text-sm text-bn-navy/55 leading-relaxed mb-2">{uc.desc}</p>
+              <span class="text-xs font-semibold">{uc.status}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

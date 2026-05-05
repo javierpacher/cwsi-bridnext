@@ -1,0 +1,128 @@
+---
+const navLinks = [
+  { href: '#que-somos',     label: '¿Qué Somos?' },
+  { href: '#como-funciona', label: 'Cómo Funciona' },
+  { href: '#precios',       label: 'Precios' },
+  { href: '#roadmap',       label: 'Roadmap' },
+];
+---
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5" aria-label="Bridnext">
+        <img src="/Bridnext_icon.png" class="h-9 w-auto" alt="Bridnext icon" />
+        <span id="nav-brand" class="font-brand text-xl font-bold text-white tracking-tight transition-colors duration-300">
+          Bridnext
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden lg:flex items-center gap-7">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="nav-link text-sm font-medium text-white/75 hover:text-white transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden lg:block">
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-1.5 bg-bn-teal hover:bg-bn-teal-light text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors duration-200"
+        >
+          Solicitar Demo
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+        aria-label="Abrir menú"
+      >
+        <svg id="icon-open"  class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden mt-2 mx-4 rounded-xl bg-bn-navy/95 backdrop-blur-md border border-white/10 overflow-hidden"
+  >
+    <div class="px-5 py-4 flex flex-col gap-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="mobile-link block py-2.5 text-sm font-medium text-white/75 hover:text-white transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contacto"
+        class="mt-3 block text-center bg-bn-teal text-white font-semibold text-sm px-5 py-2.5 rounded-lg"
+      >
+        Solicitar Demo
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar     = document.getElementById('navbar')!;
+  const brand      = document.getElementById('nav-brand')!;
+  const navLinks   = document.querySelectorAll<HTMLElement>('.nav-link');
+  const toggle     = document.getElementById('menu-toggle')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const iconOpen   = document.getElementById('icon-open')!;
+  const iconClose  = document.getElementById('icon-close')!;
+
+  function applyScrollState() {
+    const scrolled = window.scrollY > 60;
+    navbar.classList.toggle('bg-white',     scrolled);
+    navbar.classList.toggle('shadow-md',    scrolled);
+    navbar.classList.toggle('py-5',        !scrolled);
+    navbar.classList.toggle('py-3',         scrolled);
+    brand.classList.toggle('text-white',   !scrolled);
+    brand.classList.toggle('text-bn-navy',  scrolled);
+    navLinks.forEach(l => {
+      l.classList.toggle('text-white/75',    !scrolled);
+      l.classList.toggle('hover:text-white', !scrolled);
+      l.classList.toggle('text-bn-navy/60',   scrolled);
+      l.classList.toggle('hover:text-bn-navy',scrolled);
+    });
+    toggle.classList.toggle('text-white',  !scrolled);
+    toggle.classList.toggle('text-bn-navy', scrolled);
+  }
+
+  window.addEventListener('scroll', applyScrollState, { passive: true });
+
+  toggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden',  !open);
+    iconClose.classList.toggle('hidden',  open);
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+</script>
